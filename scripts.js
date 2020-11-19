@@ -18,6 +18,10 @@ const movieCard = (movies) => html`
     )}
 `;
 
+const errorMarquee = () => html`
+    <marquee>Gah, it's not working!</marquee>
+`;
+
 render(logo('logo.png'), document.querySelector('#root'));
 
 fetch('https://ghibliapi.herokuapp.com/films', {
@@ -35,8 +39,6 @@ fetch('https://ghibliapi.herokuapp.com/films', {
         console.log('done')
     })
     .catch(function (err) {
+        render(errorMarquee(), document.querySelector('#container'));
         console.log(err);
-        // const errorMessage = document.createElement('marquee')
-        // errorMessage.textContent = `Gah, it's not working!`
-        // app.appendChild(errorMessage)
     })
